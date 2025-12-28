@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
+
 import Nav from "./components/Nav";
 
 import Hero from "./sections/Hero";
 import AfterHero from "./sections/AfterHero";
-import DesignGallery from "./sections/DesignGallery";
+import DesignGallery from "./sections/DesignGallery";       // PC
+import DesignGallerySP from "./sections/DesignGallerySP";   // SP
 import Feature from "./sections/Feature";
 import MenuPrice from "./sections/MenuPrice";
 import Exterior from "./sections/Exterior";
@@ -11,50 +14,50 @@ import Reservation from "./sections/Reservation";
 import Footer from "./sections/Footer";
 
 export default function App() {
+  const [isSP, setIsSP] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsSP(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <>
-      {/* 固定ナビ */}
       <Nav />
 
-      {/* ===== TOP / HERO ===== */}
       <main id="top">
         <Hero />
       </main>
 
-      {/* ===== CONCEPT ===== */}
       <section id="concept">
         <AfterHero />
       </section>
 
-      {/* ===== GALLERY ===== */}
+      {/* ===== GALLERY（ここだけ分岐） ===== */}
       <section id="gallery">
-        <DesignGallery />
+        {isSP ? <DesignGallerySP /> : <DesignGallery />}
       </section>
 
-      {/* ===== FEATURE ===== */}
       <section id="feature">
         <Feature />
       </section>
 
-      {/* ===== MENU ===== */}
       <section id="menu">
         <MenuPrice />
       </section>
 
-      {/* ===== ACCESS ===== */}
       <section id="access">
         <Exterior />
       </section>
 
-      {/* ===== CLOSING ===== */}
       <ClosingCopy />
 
-      {/* ===== RESERVATION ===== */}
       <section id="reservation">
         <Reservation />
       </section>
 
-      {/* ===== FOOTER ===== */}
       <Footer />
     </>
   );
