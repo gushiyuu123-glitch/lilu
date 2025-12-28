@@ -1,23 +1,17 @@
 /* =====================================================
-   DESIGN GALLERY — FINAL (PC ONLY)
+   DESIGN GALLERY — PC
 ===================================================== */
 
-/* =========================
-   スクロール燃料（JS制御）
-========================= */
+/* スクロール燃料 */
 .design-gallery-spacer {
   height: 0;
 }
 
-/* =========================
-   固定ギャラリー
-========================= */
+/* 固定ギャラリー */
 .gallery-fixed {
   position: fixed;
   inset: 0;
-  width: 100%;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,7 +32,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
-
   isolation: isolate;
 }
 
@@ -47,9 +40,7 @@
   pointer-events: auto;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* 背景 */
 .gallery-bg {
   position: absolute;
   inset: -12%;
@@ -60,143 +51,102 @@
   z-index: -1;
 }
 
-/* =========================
-   縦タイポ
-========================= */
+/* 縦タイポ */
 .gallery-typo-vertical {
   position: absolute;
   left: 2.4vw;
   top: 50%;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
-
   font-size: 0.6rem;
   letter-spacing: 0.55em;
   color: rgba(110, 110, 110, 0.45);
-
   pointer-events: none;
-  z-index: 2;
 }
 
-/* =========================
-   TITLE
-========================= */
+/* タイトル */
 .gallery-title {
   text-align: center;
   margin-bottom: 10vh;
-
   font-size: 0.82rem;
   letter-spacing: 0.48em;
   color: var(--pink-dusty);
-  z-index: 3;
 }
 
-/* =========================
-   TRACK（横移動のみ）
-========================= */
+/* 横トラック */
 .gallery-track {
   display: flex;
   align-items: center;
   gap: 160px;
   padding-left: 24vw;
   padding-right: 22vw;
-
   will-change: transform;
-  transition: transform 0.25s cubic-bezier(.22,.61,.36,1);
 }
 
-/* =========================
-   ITEM
-========================= */
+/* アイテム */
 .gallery-item {
   width: 380px;
   flex-shrink: 0;
-
   opacity: 0.72;
-  filter: saturate(1.02);
-
   transition:
     opacity 0.8s ease,
-    filter 0.8s ease,
     transform 1s cubic-bezier(.22,.61,.36,1);
 }
 
 .gallery-item:nth-child(odd) {
   transform: translateY(-14px) scale(0.985);
 }
-
 .gallery-item:nth-child(even) {
   transform: translateY(22px) scale(0.985);
 }
 
-/* =========================
-   IMAGE
-========================= */
 .gallery-item img {
   width: 100%;
   display: block;
   border-radius: 8px;
-
-  filter: contrast(1.06) saturate(1.05);
-
   box-shadow:
     0 26px 60px rgba(0,0,0,0.14),
     0 10px 22px rgba(0,0,0,0.08);
 }
 
-/* =========================
-   CAPTION
-========================= */
+/* キャプション */
 .gallery-item figcaption {
   margin-top: 16px;
   text-align: center;
-
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   color: rgba(90, 90, 90, 0.7);
 }
 
-/* =========================
-   END COPY（最終形）
-========================= */
+/* END COPY */
 .gallery-end {
   position: absolute;
   bottom: 14vh;
   width: 100%;
   text-align: center;
-  pointer-events: none;
-  z-index: 4;
 }
 
 .gallery-end-copy {
   font-size: 0.9rem;
   letter-spacing: 0.28em;
   color: var(--text-main);
-
   opacity: 0;
   transform: translateY(14px);
-
   transition:
     opacity 1.6s ease,
     transform 1.8s cubic-bezier(.22,.61,.36,1);
 }
-.gallery-end-copy {
-  opacity: 0.78;
-  transform: translateY(12px);
-}
 
-/* gallery に入って少し遅れて出る */
 .gallery-fixed.show-end-copy .gallery-end-copy {
-  opacity: 0.8;        /* ← 0.85より余韻寄り */
+  opacity: 0.8;
   transform: translateY(0);
 }
+
 /* =====================================================
-   DESIGN GALLERY — SP MODE
-   ※ PCは一切触らない
+   DESIGN GALLERY — SP
 ===================================================== */
 @media (max-width: 768px) {
 
-  /* fixed を解除 */
   .gallery-fixed {
     position: relative;
     height: auto;
@@ -212,24 +162,20 @@
       );
   }
 
-  /* スクロール燃料は無効 */
   .design-gallery-spacer {
     height: 0 !important;
   }
 
-  /* 縦タイポは消す（SPではノイズ） */
   .gallery-typo-vertical {
     display: none;
   }
 
-  /* タイトル */
   .gallery-title {
     margin: 16vh 0 8vh;
     font-size: 0.75rem;
     letter-spacing: 0.42em;
   }
 
-  /* 横スクロール解除 → 縦並び */
   .gallery-track {
     flex-direction: column;
     gap: 64px;
@@ -245,23 +191,8 @@
     transform: none !important;
   }
 
-  .gallery-item img {
-    border-radius: 10px;
-    box-shadow:
-      0 18px 40px rgba(0,0,0,0.12),
-      0 6px 16px rgba(0,0,0,0.06);
-  }
-
-  .gallery-item figcaption {
-    margin-top: 14px;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-  }
-
-  /* END COPY は最後に自然表示 */
   .gallery-end {
     position: relative;
-    bottom: auto;
     margin: 14vh 0 18vh;
   }
 

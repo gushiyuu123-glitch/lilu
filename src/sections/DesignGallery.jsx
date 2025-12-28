@@ -5,17 +5,18 @@ export default function DesignGallery() {
   const spacerRef = useRef(null);
   const trackRef = useRef(null);
   const rafRef = useRef(null);
+  const timerRef = useRef(null);
 
   const [isActive, setIsActive] = useState(false);
   const [showEndCopy, setShowEndCopy] = useState(false);
 
-  // タイマー掃除用
-  const timerRef = useRef(null);
-
   /* =========================
-     横スクロール制御
+     横スクロール制御（PC ONLY）
   ========================= */
   useEffect(() => {
+    // ★ SPでは完全停止
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+
     const spacer = spacerRef.current;
     const track = trackRef.current;
     if (!spacer || !track) return;
@@ -23,7 +24,7 @@ export default function DesignGallery() {
     const update = () => {
       const maxX = track.scrollWidth - window.innerWidth;
 
-      // 燃料（高さ）
+      // スクロール燃料
       spacer.style.height = `${maxX + window.innerHeight}px`;
 
       const start = spacer.offsetTop;
@@ -65,30 +66,30 @@ export default function DesignGallery() {
   }, []);
 
   /* =========================
-     END COPY（spacer到達で遅れて出す）
+     END COPY（PCのみ・一度きり）
   ========================= */
   useEffect(() => {
+    // ★ SPでは不要
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+
     const spacer = spacerRef.current;
     if (!spacer) return;
 
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-
-        // 既に出てたら何もしない
         if (timerRef.current) return;
 
-        // ★少し遅らせる（ここで100%正しく発火する）
         timerRef.current = setTimeout(() => {
           setShowEndCopy(true);
           timerRef.current = null;
         }, 360);
 
-        io.disconnect(); // 一回きり
+        io.disconnect();
       },
       {
-        threshold: 0.01,                // 軽く触れたら発火
-        rootMargin: "-20% 0px -60% 0px"  // “入った感”の位置調整
+        threshold: 0.01,
+        rootMargin: "-20% 0px -60% 0px",
       }
     );
 
@@ -105,11 +106,15 @@ export default function DesignGallery() {
 
   return (
     <>
-      {/* スクロール燃料（ここが監視対象） */}
+      {/* スクロール燃料（PCのみ意味を持つ） */}
       <section ref={spacerRef} className="design-gallery-spacer" />
 
-      {/* ギャラリー本体（fixed） */}
-      <div className={`gallery-fixed ${isActive ? "is-active" : ""}`}>
+      {/* ギャラリー本体 */}
+      <div
+        className={`gallery-fixed ${
+          isActive ? "is-active" : ""
+        } ${showEndCopy ? "show-end-copy" : ""}`}
+      >
         <div className="gallery-bg" />
         <div className="gallery-typo-vertical">NAIL DESIGN</div>
         <h2 className="gallery-title">GALLERY</h2>
@@ -124,7 +129,7 @@ export default function DesignGallery() {
         </div>
 
         <div className="gallery-end">
-          <p className={`gallery-end-copy ${showEndCopy ? "is-show" : ""}`}>
+          <p className="gallery-end-copy">
             静かに、選ばれる指先へ。
           </p>
         </div>
