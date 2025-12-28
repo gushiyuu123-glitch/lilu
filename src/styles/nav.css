@@ -1,0 +1,165 @@
+/* =========================
+   NAV
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 120;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(14px, 3vw, 18px) 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ラベル（ロゴではない） */
+.nav-logo {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  letter-spacing: 0.18em;
+  color: rgba(0,0,0,0.35);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* =========================
+   PC LINKS
+========================= */
+.nav-links {
+  display: flex;
+  gap: clamp(18px, 2.4vw, 32px);
+}
+
+.nav-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-decoration: none;
+  color: #2a2a2a;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links .is-accent {
+  color: var(--pink-dusty);
+  opacity: 0.9;
+}
+
+/* =========================
+   TOGGLE（SP）
+========================= */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 28px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.8px;              /* 細くて上品 */
+  background: rgba(42,42,42,0.85);
+  border-radius: 1px;         /* ほんのり丸み */
+  transition:
+    transform 0.45s cubic-bezier(.22,.61,.36,1),
+    top 0.45s cubic-bezier(.22,.61,.36,1),
+    bottom 0.45s cubic-bezier(.22,.61,.36,1),
+    background 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.nav-toggle span:first-child {
+  top: 5px;
+}
+
+.nav-toggle span:last-child {
+  bottom: 5px;
+}
+
+/* OPEN */
+.nav-toggle.is-open span:first-child {
+  transform: rotate(45deg);
+  top: 10.5px;
+}
+
+.nav-toggle.is-open span:last-child {
+  transform: rotate(-45deg);
+  bottom: 10.5px;
+}
+
+/* 触ったときの可愛さ */
+.nav-toggle:hover span {
+  background: var(--pink-dusty);
+}
+
+.nav-toggle:active {
+  transform: scale(0.96);
+}
+
+/* =========================
+   DRAWER（SP）
+========================= */
+.nav-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.96);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  z-index: 110;
+}
+
+.nav-drawer.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-drawer a {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  color: #2a2a2a;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* =========================
+   OFFSET FIX
+========================= */
+section {
+  scroll-margin-top: clamp(64px, 12vw, 84px);
+}

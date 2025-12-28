@@ -1,0 +1,244 @@
+/* =========================
+   FEATURE SECTION
+========================= */
+.feature {
+  position: relative;
+  padding: 26vh 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.96) 0%,
+      rgba(255,255,255,0.92) 40%,
+      rgba(255,255,255,0.96) 100%
+    );
+  overflow: hidden;
+}
+
+/* 空気レイヤー（控えめ） */
+.feature::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background-image: url("/images/smoke-abstract.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(26px) brightness(1.04);
+  opacity: 0.16;
+  transform: scale(1.06);
+  z-index: 0;
+}
+
+/* 光の芯（弱め・一点集中） */
+.feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      620px 420px at 60% 55%,
+      rgba(255, 210, 225, 0.22),
+      transparent 65%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.feature-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 6vw;
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ gap: 8vw;
+  align-items: center;
+}
+
+/* =========================
+   VISUAL（迫力はここで出す）
+========================= */
+.feature-visual {
+  position: relative;
+}
+
+/* 写真背後の柔らかい奥行き */
+.feature-visual::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(
+      60% 60% at 50% 45%,
+      rgba(255, 220, 230, 0.28),
+      transparent 70%
+    );
+  filter: blur(20px);
+  z-index: 0;
+}
+
+.feature-visual img {
+  position: relative;
+  z-index: 1;
+
+  width: 108%;        /* ← 大きいが被らない */
+  max-width: none;
+  transform: translateY(-6px) translateX(-2%);
+  border-radius: 12px;
+
+  box-shadow:
+    0 34px 72px rgba(0,0,0,0.13),
+    0 12px 26px rgba(0,0,0,0.09);
+}
+
+/* PCのみ：ほんのり浮く */
+@media (min-width: 769px) {
+  .feature-visual img {
+    
+    transition: transform 1.1s cubic-bezier(.22,.61,.36,1);
+  }
+
+  .feature:hover .feature-visual img {
+    transform: translateY(-14px);
+  }
+}
+
+/* =========================
+   CONTENT（文字は完全に安全）
+========================= */
+.feature-content {
+  position: relative;
+  padding-left: 1.5vw;
+  z-index: 2;
+}
+
+/* =========================
+   TEXT
+========================= */
+.feature-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--pink-dusty);
+  margin-bottom: 3vh;
+}
+
+.feature-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  margin-bottom: 6vh;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.feature-item h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  margin-bottom: 1vh;
+}
+
+.feature-item p {
+  font-size: 0.8rem;
+  line-height: 2;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+/* =========================
+   RESPONSIVE（SP）
+========================= */
+@media (max-width: 768px) {
+  .feature {
+    padding: 18vh 0;
+  }
+
+  .feature-inner {
+    grid-template-columns: 1fr;
+    gap: 10vh;
+  }
+
+  .feature-title {
+    font-size: 1.6rem;
+  }
+
+  .feature-visual img {
+    width: 100%;
+    transform: none;
+  }
+}
+/* =====================================================
+   FEATURE — SP OPTIMIZE
+   ※ PCは一切変更しない
+===================================================== */
+@media (max-width: 768px) {
+
+  /* セクション余白を少し詰めてテンポ調整 */
+  .feature {
+    padding: 16vh 0;
+  }
+
+  /* 背景の空気を弱める（文字優先） */
+  .feature::before {
+    opacity: 0.1;
+    filter: blur(32px);
+  }
+
+  .feature::after {
+    opacity: 0.5;
+  }
+
+  /* 写真は「雰囲気だけ残す」 */
+  .feature-visual {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .feature-visual::before {
+    opacity: 0.6;
+    filter: blur(24px);
+  }
+
+  .feature-visual img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.12),
+      0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  /* テキストを完全に主役に */
+  .feature-content {
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .feature-eyebrow {
+    margin-bottom: 2.5vh;
+    letter-spacing: 0.36em;
+  }
+
+  .feature-title {
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    line-height: 1.9;
+    margin-bottom: 5vh;
+  }
+
+  .feature-list {
+    gap: 3.5vh;
+  }
+
+  .feature-item h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+  }
+
+  .feature-item p {
+    font-size: 0.75rem;
+    line-height: 2.05;
+  }
+}

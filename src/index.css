@@ -1,0 +1,101 @@
+:root {
+  /* Base Colors */
+  --white-base: #faf9f7;
+  --beige-soft: #f3efe9;
+  --pink-dusty: #d8a7b1;
+
+  /* Text Colors（微調整） */
+  --text-main: rgba(90, 85, 85, 0.88);   /* 少し温度と芯を足す */
+  --text-light: #b3b3b3;
+  --text-price: #7d7d7d;
+
+  /* Font */
+  --font-serif: "Libre Baskerville", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* ======================
+   Base
+====================== */
+body {
+  background: var(--white-base);
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  line-height: 2.05;          /* 少し締める */
+}
+
+/* ======================
+   Logo（主役）
+====================== */
+.logo {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: 0.22em;     /* わずかに締める */
+  color: var(--pink-dusty);
+  font-weight: 400;
+}
+
+/* ======================
+   Navigation（脇役）
+====================== */
+.nav {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;     /* 意図的に少し広い */
+  color: var(--text-light);
+}
+
+/* ======================
+   Price（情報）
+====================== */
+.price {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--text-price);
+}
+
+/* ======================
+   Sections
+====================== */
+.section-base {
+  background: var(--white-base);
+}
+
+.section-soft {
+  background: var(--beige-soft);
+}
+
+/* ======================
+   Accent（使いすぎない）
+====================== */
+.accent {
+  color: var(--pink-dusty);
+}
+
+/* ======================
+   Button（選ばせる）
+====================== */
+button {
+  transition: color 0.3s ease;
+}
+
+button:hover {
+  color: var(--pink-dusty);
+}
+/* =========================
+   GLOBAL OVERFLOW KILL (SP)
+========================= */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .hero,
+  .feature,
+  .exterior,
+  .gallery-fixed,
+  .reservation {
+    overflow-x: hidden;
+  }
+}

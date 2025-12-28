@@ -1,0 +1,149 @@
+.after-hero {
+  position: relative;
+   padding: 30vh 0 26vh; /* ← 上だけ +6vh */
+  background: var(--white-base);
+  overflow: hidden;
+}
+
+/* ======================
+   SMOKE (image layer)
+====================== */
+.after-smoke {
+  position: absolute;
+   top: 59%;            /* ← 50% → 54% */
+  right: 26%;          /* ← 寄せる */
+  width: 420px;       /* ← 小さく */
+  height: 560px;
+
+
+  background-image: url("/images/smoke-abstract1.png"); /* ←ここ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+ opacity: 0;
+  filter: blur(12px);
+  transform: translateY(-50%) scale(0.9);
+  transition:
+    opacity 1.6s ease,
+    transform 2.4s ease,
+    filter 2.4s ease;
+
+  z-index: 0;
+  pointer-events: none;
+   mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* 出現 → 拡散 */
+.after-smoke.is-active {
+  
+  opacity: 0.6;        /* ← わずかに抑える */
+  filter: blur(6px);
+  transform: translateY(-50%) scale(1.02);
+}
+
+/* ======================
+   TEXT
+====================== */
+.after-hero-inner {
+  position: relative;
+  margin-left: 35vw;   /* ← 今より +4vw */
+  margin-top: 4vh;     /* ← これが効く */
+  max-width: 620px;    /* ← 少し締める */
+  z-index: 1;
+}
+
+.after-line {
+  margin: 0;
+  font-family: var(--font-serif);
+  color: var(--text-soft);
+}
+
+.after-line.small {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  margin-bottom: 4vh;
+  color: var(--pink-dusty);
+}
+
+.after-line.main {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.9;
+  letter-spacing: 0.12em;
+  margin-bottom: 4vh;
+}
+
+.after-line.sub {
+  font-size: 0.75rem;
+  line-height: 2.1;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+  margin-bottom: 6vh;
+}
+
+.after-line.micro {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  opacity: 0.45;
+}
+/* ======================
+   SP OPTIMIZE（PCは触らない）
+====================== */
+@media (max-width: 768px) {
+
+  .after-hero {
+    padding: 22vh 0 22vh;
+  }
+
+  /* smoke は「気配」にする */
+  .after-smoke {
+    top: 50%;
+    right: 50%;
+    width: 320px;
+    height: 420px;
+    transform: translate(50%, -50%) scale(0.95);
+    opacity: 0;
+    filter: blur(18px);
+  }
+
+  .after-smoke.is-active {
+    opacity: 0.35;
+    filter: blur(14px);
+    transform: translate(50%, -50%) scale(1);
+  }
+
+  /* テキストは中央に */
+  .after-hero-inner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    max-width: 88%;
+    text-align: center;
+  }
+
+  .after-line.small {
+    margin-bottom: 3vh;
+    letter-spacing: 0.32em;
+  }
+
+  .after-line.main {
+    font-size: clamp(1.35rem, 6vw, 1.7rem);
+    line-height: 1.85;
+    margin-bottom: 3.5vh;
+  }
+
+  .after-line.sub {
+    font-size: 0.7rem;
+    line-height: 2;
+    margin-bottom: 4.5vh;
+  }
+
+  .after-line.micro {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+  }
+}

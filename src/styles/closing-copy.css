@@ -1,0 +1,86 @@
+/* =========================
+   CLOSING COPY
+========================= */
+.closing-copy {
+  position: relative;
+  padding: 20vh 0 22vh;   /* ← 少しだけ締める */
+  background: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 文字 */
+.closing-copy-text {
+  font-family: var(--font-serif);
+
+  /* ★ サイズを1段下げる */
+  font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+
+  /* ★ 呼吸を落ち着かせる */
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+
+  color: #2a2a2a;
+
+  opacity: 0;
+
+  /* ★ 動きを短く・浅く */
+  transform: translateY(16px);
+
+  transition:
+    opacity 1.4s ease,
+    transform 1.6s cubic-bezier(.22,.61,.36,1);
+}
+
+/* 強調 */
+.closing-copy-text span {
+  color: var(--pink-dusty);
+}
+
+/* 表示 */
+.closing-copy.is-show .closing-copy-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 余韻の空気（さらに控えめ） */
+.closing-copy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      700px 300px at 50% 58%,
+      rgba(0,0,0,0.025),
+      transparent 70%
+    );
+  pointer-events: none;
+}
+/* =====================================================
+   CLOSING COPY — SP OPTIMIZE
+   ※ PCは一切変更しない
+===================================================== */
+@media (max-width: 768px) {
+
+  .closing-copy {
+    padding: 16vh 0 18vh;
+  }
+
+  .closing-copy-text {
+    font-size: clamp(1.5rem, 7vw, 1.9rem);
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+
+    /* 動きをさらに浅く */
+    transform: translateY(10px);
+  }
+
+  .closing-copy::after {
+    background:
+      radial-gradient(
+        520px 240px at 50% 60%,
+        rgba(0,0,0,0.02),
+        transparent 70%
+      );
+  }
+}

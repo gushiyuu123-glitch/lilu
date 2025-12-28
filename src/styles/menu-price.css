@@ -1,0 +1,322 @@
+/* =========================
+   MENU & PRICE
+========================= */
+.menu {
+  padding: 26vh 0;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #faf7f5 100%
+    );
+}
+
+.menu-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+
+/* =========================
+   TITLE
+========================= */
+.menu-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--pink-dusty);
+  margin-bottom: 3vh;
+  text-align: center;
+}
+
+.menu-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  margin-bottom: 4vh;
+  text-align: center;
+}
+
+.menu-lead {
+  font-size: 0.8rem;
+  line-height: 2;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+  text-align: center;
+  margin-bottom: 14vh;
+}
+
+/* =========================
+   MAIN MENU
+========================= */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.menu-row.reverse {
+  direction: rtl;
+}
+.menu-row.reverse > * {
+  direction: ltr;
+}
+
+/* IMAGE */
+.menu-image img {
+  width: 100%;
+  border-radius: 12px;
+
+  transform: translateY(-4px);
+  transition: transform 1s cubic-bezier(.22,.61,.36,1);
+
+  box-shadow:
+    0 30px 64px rgba(0,0,0,0.13),
+    0 12px 26px rgba(0,0,0,0.09);
+}
+
+@media (min-width: 769px) {
+  .menu-row:hover .menu-image img {
+    transform: translateY(-12px);
+  }
+}
+
+/* TEXT */
+.menu-price {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  color: var(--pink-dusty);
+  opacity: 0.85;
+  margin-bottom: 1.2vh;
+  display: inline-block;
+}
+
+.menu-text h3 {
+  font-size: 1.2rem;
+  margin-bottom: 2vh;
+}
+
+.menu-text p {
+  font-size: 0.8rem;
+  line-height: 2;
+  opacity: 0.75;
+}
+
+/* DIVIDER */
+.menu-list hr {
+  border: none;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+/* =========================
+   OTHER MENU (Accordion)
+========================= */
+.menu-sub {
+  margin-top: 14vh;
+  text-align: center;
+}
+
+.menu-sub-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.menu-sub-icon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+}
+
+.menu-sub-icon::before,
+.menu-sub-icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.menu-sub-icon::before {
+  width: 10px;
+  height: 1px;
+  top: 50%;
+}
+
+.menu-sub-icon::after {
+  width: 1px;
+  height: 10px;
+  left: 50%;
+}
+
+.menu-sub-toggle.is-open .menu-sub-icon::after {
+  display: none;
+}
+
+.menu-sub-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.6s ease,
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(.22,.61,.36,1);
+  margin-top: 3vh;
+}
+
+.menu-sub-panel.is-open {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-sub-list {
+  font-size: 0.75rem;
+  line-height: 2.4;
+  letter-spacing: 0.14em;
+  opacity: 0.55;
+  margin-bottom: 2vh;
+}
+
+.menu-sub-note {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+/* =========================
+   BOTTOM NOTE
+========================= */
+.menu-note-bottom {
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  opacity: 0.45;
+  margin-top: 12vh;
+}
+.menu hr {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  opacity: 0.4;
+  max-width: 60%;
+  margin: 10vh 0;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .menu {
+    padding: 18vh 0;
+  }
+
+  .menu-row {
+    grid-template-columns: 1fr;
+    gap: 8vh;
+  }
+
+  .menu-image img {
+    transform: none;
+  }
+}
+/* =====================================================
+   MENU & PRICE — SP OPTIMIZE
+   ※ PCは一切変更しない
+===================================================== */
+@media (max-width: 768px) {
+
+  /* セクション余白を少し詰める */
+  .menu {
+    padding: 16vh 0;
+  }
+
+  .menu-lead {
+    margin-bottom: 10vh;
+    font-size: 0.75rem;
+    line-height: 2.1;
+  }
+
+  /* 各メニューを「カード的」に */
+  .menu-row {
+    padding: 8vh 0;
+    gap: 6vh;
+  }
+
+  /* reverse 無効（SPでは順序を統一） */
+  .menu-row.reverse {
+    direction: ltr;
+  }
+
+  /* 料金を一番目立たせる */
+  .menu-price {
+    font-size: 0.75rem;
+    letter-spacing: 0.36em;
+    margin-bottom: 0.8vh;
+  }
+
+  .menu-text h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1.6vh;
+  }
+
+  .menu-text p {
+    font-size: 0.75rem;
+    line-height: 2.05;
+  }
+
+  /* 写真は少し軽く */
+  .menu-image img {
+    border-radius: 10px;
+    box-shadow:
+      0 18px 36px rgba(0,0,0,0.12),
+      0 6px 14px rgba(0,0,0,0.06);
+  }
+
+  /* 区切り線を短く・静かに */
+  .menu-list hr,
+  .menu hr {
+    max-width: 40%;
+    margin: 8vh auto;
+  }
+
+  /* アコーディオンは押しやすく */
+  .menu-sub {
+    margin-top: 12vh;
+  }
+
+  .menu-sub-toggle {
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    padding: 0.6em 0.2em;
+  }
+
+  .menu-sub-list {
+    font-size: 0.7rem;
+    line-height: 2.2;
+  }
+
+  .menu-sub-note {
+    font-size: 0.6rem;
+  }
+
+  /* 最後の注意書き */
+  .menu-note-bottom {
+    margin-top: 10vh;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+  }
+}

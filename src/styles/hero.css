@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  min-height: 100svh; /* iOS対応 */
+  background: var(--white-base);
+  overflow: hidden;
+}
+
+/* ======================
+   背景（静＋奥行）
+====================== */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/hero-bg4.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.72;
+
+  box-shadow:
+    inset 0 0 220px rgba(255, 255, 255, 0.34),
+    inset 0 0 90px rgba(255, 240, 235, 0.22);
+}
+
+/* 中央集中レイヤー */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.28) 0%,
+    rgba(255,255,255,0.14) 32%,
+    rgba(255,240,235,0.08) 52%,
+    rgba(255,240,235,0.03) 68%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ======================
+   脇役（空気）
+====================== */
+.hero-sub {
+  position: absolute;
+  opacity: 0.06;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.s1 {
+  top: 6%;
+  left: 2%;
+  width: clamp(220px, 40vw, 420px);
+}
+
+.s2 {
+  bottom: 10%;
+  right: 5%;
+  width: clamp(200px, 38vw, 380px);
+}
+
+.s3 {
+  top: 60%;
+  right: 30%;
+  width: clamp(160px, 32vw, 280px);
+}
+
+/* ======================
+   主役
+====================== */
+.hero-main {
+  position: absolute;
+  bottom: -6vh;
+  right: clamp(4vw, 8vw, 10vw);
+  width: clamp(220px, 60vw, 340px);
+  z-index: 2;
+
+  filter:
+    brightness(1.01)
+    contrast(1.05);
+}
+
+/* ======================
+   ロゴ
+====================== */
+.hero-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -47%);
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  letter-spacing: 0.30em;
+  color: var(--pink-dusty);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  z-index: 3;
+
+  padding: 0.18em 0.45em;
+  backdrop-filter: blur(1.5px);
+  background: rgba(255,255,255,0.10);
+}
+
+/* ======================
+   SP微調整
+====================== */
+@media (max-width: 768px) {
+  .hero-sub {
+    opacity: 0.04; /* ノイズ削減 */
+  }
+
+  .hero-main {
+    bottom: -4vh;
+  }
+
+  .hero-logo {
+    letter-spacing: 0.26em;
+  }
+}

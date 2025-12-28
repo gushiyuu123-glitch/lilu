@@ -1,0 +1,169 @@
+/* =========================
+   EXTERIOR
+========================= */
+.exterior {
+  padding: 28vh 0 32vh;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #faf7f5 100%
+    );
+}
+
+.exterior-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 6vw;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9vw;                 /* ← 少し広げて余韻 */
+  align-items: center;
+}
+
+/* =========================
+   IMAGE（迫力はここ）
+========================= */
+.exterior-image {
+  position: relative;
+}
+
+/* うっすら光溜まり */
+.exterior-image::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background:
+    radial-gradient(
+      65% 65% at 50% 48%,
+      rgba(255, 220, 230, 0.32),
+      transparent 72%
+    );
+  filter: blur(26px);
+  z-index: 0;
+}
+
+.exterior-image img {
+  position: relative;
+  z-index: 1;
+
+ width: 112%;          /* ← 100 → 112 */
+  display: block;
+  border-radius: 12px;
+
+  transform: translateY(-2px);
+
+   box-shadow:
+    0 46px 90px rgba(0,0,0,0.16),
+    0 18px 36px rgba(0,0,0,0.10);
+
+  transition: transform 1.1s cubic-bezier(.22,.61,.36,1);
+}
+
+/* PCだけ：静かな迫力 */
+@media (min-width: 769px) {
+  .exterior:hover .exterior-image img {
+    transform: translateY(-14px);
+  }
+}
+
+/* =========================
+   TEXT
+========================= */
+.exterior-text {
+  position: relative;
+  z-index: 2;
+}
+
+.exterior-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--pink-dusty);
+  margin-bottom: 3vh;
+}
+
+.exterior-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.9;
+  letter-spacing: 0.14em;
+  margin-bottom: 4vh;
+}
+
+.exterior-note {
+  font-size: 0.75rem;
+  line-height: 2;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .exterior {
+    padding: 20vh 0 22vh;
+  }
+
+  .exterior-inner {
+    grid-template-columns: 1fr;
+    gap: 8vh;
+  }
+
+  .exterior-image img {
+    transform: none;
+  }
+}
+/* =====================================================
+   EXTERIOR — SP OPTIMIZE
+   ※ PCは一切変更しない
+===================================================== */
+@media (max-width: 768px) {
+
+  /* 余白を少し締めてテンポ良く */
+  .exterior {
+    padding: 18vh 0 20vh;
+  }
+
+  /* テキストを完全に主役に */
+  .exterior-text {
+    text-align: left;
+  }
+
+  .exterior-eyebrow {
+    margin-bottom: 2.5vh;
+    letter-spacing: 0.36em;
+  }
+
+  .exterior-title {
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    line-height: 1.95;
+    margin-bottom: 3vh;
+  }
+
+  .exterior-note {
+    font-size: 0.7rem;
+    line-height: 2.1;
+    letter-spacing: 0.16em;
+  }
+
+  /* 写真は「確認用」に一段落とす */
+  .exterior-image {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .exterior-image::before {
+    opacity: 0.55;
+    filter: blur(30px);
+  }
+
+  .exterior-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow:
+      0 20px 42px rgba(0,0,0,0.12),
+      0 6px 16px rgba(0,0,0,0.06);
+  }
+}
