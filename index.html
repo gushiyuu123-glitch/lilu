@@ -1,13 +1,104 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
+    <!-- =========================
+         BASIC
+    ========================== -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-        <!-- Google翻訳を完全無効化 -->
-    <meta name="google" content="notranslate" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lilu</title>
+
+    <!-- Google翻訳を完全無効化（ブランド表記保護） -->
+    <meta name="google" content="notranslate" />
+
+    <!-- =========================
+         TITLE / DESCRIPTION
+    ========================== -->
+    <title>LILU nail salon｜沖縄のプライベートネイルサロン</title>
+
+    <meta
+      name="description"
+      content="LILU nail salonは、沖縄にある完全予約制のプライベートネイルサロンです。流行や派手さよりも、その人らしさを大切にしたネイルをご提案しています。"
+    />
+
+    <!-- =========================
+         CANONICAL（Vercel URL）
+    ========================== -->
+    <link rel="canonical" href="https://lilu-drab.vercel.app/" />
+
+    <!-- =========================
+         FAVICON
+    ========================== -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- =========================
+         OGP（SNS共有）
+    ========================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LILU nail salon" />
+    <meta property="og:title" content="LILU nail salon｜沖縄のプライベートネイルサロン" />
+    <meta
+      property="og:description"
+      content="あなたらしさを大切にする、沖縄のプライベートネイルサロン。静かに過ごせる完全予約制の空間です。"
+    />
+    <meta property="og:url" content="https://lilu-drab.vercel.app/" />
+    <meta property="og:image" content="https://lilu-drab.vercel.app/ogp.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- =========================
+         Twitter Card
+    ========================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LILU nail salon｜沖縄のプライベートネイルサロン" />
+    <meta
+      name="twitter:description"
+      content="流行に左右されず、その人に自然に馴染むネイルをご提案するプライベートサロン。"
+    />
+    <meta name="twitter:image" content="https://lilu-drab.vercel.app/ogp.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+
+    <!-- =========================
+         STRUCTURED DATA（Local SEO）
+    ========================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NailSalon",
+      "name": "LILU nail salon",
+      "url": "https://lilu-drab.vercel.app/",
+      "image": "https://lilu-drab.vercel.app/ogp.png",
+      "description": "沖縄にある完全予約制のプライベートネイルサロン。流行よりもその人らしさを大切にしています。",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "沖縄県",
+        "addressLocality": "○○市",
+        "streetAddress": "○○町1-2-3",
+        "postalCode": "000-0000",
+        "addressCountry": "JP"
+      },
+      "openingHours": "Mo-Su 10:00-20:00",
+      "priceRange": "¥¥",
+      "sameAs": [
+        "https://www.instagram.com/xxxxxx"
+      ]
+    }
+    </script>
+
+    <!-- =========================
+         PERFORMANCE
+    ========================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
