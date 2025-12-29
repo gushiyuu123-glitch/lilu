@@ -3,7 +3,7 @@
 ========================= */
 .closing-copy {
   position: relative;
-  padding: 20vh 0 22vh;   /* ← 少しだけ締める */
+padding: 33vh 0 5vh;
   background: #fff;
   text-align: center;
   overflow: hidden;
