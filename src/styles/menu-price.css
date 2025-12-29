@@ -260,7 +260,9 @@
   .menu-row.reverse {
     direction: ltr;
   }
-
+ .menu-text{
+    text-align: center;
+  }
   /* 料金を一番目立たせる */
   .menu-price {
     font-size: 0.75rem;

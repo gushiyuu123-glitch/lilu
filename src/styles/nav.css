@@ -72,20 +72,6 @@ html {
   cursor: pointer;
 }
 
-.nav-toggle span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 0.8px;              /* 細くて上品 */
-  background: rgba(42,42,42,0.85);
-  border-radius: 1px;         /* ほんのり丸み */
-  transition:
-    transform 0.45s cubic-bezier(.22,.61,.36,1),
-    top 0.45s cubic-bezier(.22,.61,.36,1),
-    bottom 0.45s cubic-bezier(.22,.61,.36,1),
-    background 0.3s ease,
-    opacity 0.3s ease;
-}
 
 .nav-toggle span:first-child {
   top: 5px;
@@ -162,4 +148,18 @@ html {
 ========================= */
 section {
   scroll-margin-top: clamp(64px, 12vw, 84px);
+}
+.nav-toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.8px;
+  background: var(--pink-dusty); /* ← ここを変更 */
+  border-radius: 1px;
+  transition:
+    transform 0.45s cubic-bezier(.22,.61,.36,1),
+    top 0.45s cubic-bezier(.22,.61,.36,1),
+    bottom 0.45s cubic-bezier(.22,.61,.36,1),
+    background 0.3s ease,
+    opacity 0.3s ease;
 }
