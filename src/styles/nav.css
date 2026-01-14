@@ -163,3 +163,20 @@ section {
     background 0.3s ease,
     opacity 0.3s ease;
 }
+.nav-logo {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: #333;
+  text-decoration: none;
+}
+
+/* LILUだけ */
+.nav-logo-mark {
+  color: var(--pink-dusty);
+  letter-spacing: 0.34em; /* 少しだけ品を足す */
+}
+
+/* nail salon */
+.nav-logo-text {
+  opacity: 0.6;
+}

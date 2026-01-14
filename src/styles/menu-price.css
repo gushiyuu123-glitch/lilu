@@ -90,10 +90,10 @@
 /* TEXT */
 .menu-price {
   font-family: var(--font-serif);
-  font-size: 0.8rem;
-  letter-spacing: 0.32em;
+  font-size: 0.86rem;     /* ← ここだけ */
+  letter-spacing: 0.30em; /* 少し詰めて密度UP */
   color: var(--pink-dusty);
-  opacity: 0.85;
+  opacity: 0.9;           /* 数字の芯を出す */
   margin-bottom: 1.2vh;
   display: inline-block;
 }
@@ -216,6 +216,10 @@
   max-width: 60%;
   margin: 10vh 0;
 }
+.menu-price {
+  font-family: "Cormorant Garamond", serif;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -265,8 +269,8 @@
   }
   /* 料金を一番目立たせる */
   .menu-price {
-    font-size: 0.75rem;
-    letter-spacing: 0.36em;
+    font-size: 0.8rem;     /* ← ほんの少し */
+    letter-spacing: 0.34em;
     margin-bottom: 0.8vh;
   }
 
